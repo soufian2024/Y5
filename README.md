@@ -3,35 +3,50 @@
 > ⚠️ **ALPHA - UNDER ACTIVE DEVELOPMENT**  
 > **Status**: Educational & Proprietary. Not for commercial use. See LICENSE.
 
-Y5 is the next-generation educational deep learning framework, inspired by the internal `n5` engine.  
-Built with pure NumPy, Y5 aims to be the cleanest and most readable way to understand how neural networks work from scratch.
+**Y5** is the improved version of `n5`.  
+Same philosophy, better experience. Built for learning deep learning with NumPy + SciPy.
 
-### Key Goals & Expectations for Y5
+### Why Y5 and not n5?
 
-Y5 is not meant to replace PyTorch or TensorFlow. It is meant to teach.
+`n5` was public and smooth. `Y5` takes that base and makes it better.
 
-| Feature | n5 v2024-2026 | Y5 Roadmap v1.0 |
+|  | **n5** | **Y5** |
 | --- | --- | --- |
-| **Target** | Private / Research | Public / Educational |
-| **Code Clarity** | Functional, Dense | Modular, Heavily Commented |
-| **Documentation** | Minimal | Full Docs + Examples + Tutorials |
-| **Layers** | Dense, Conv2D, Pool, Dropout | All n5 layers + BatchNorm, RNN, LSTM |
-| **Activations** | 9 Activations | 9 Activations + Swish, Mish |
-| **Save Format** | .n5 proprietary | .y5 + Safe .npz state |
-| **License** | Ironclad Proprietary | Ironclad Proprietary |
-| **Focus** | Speed of prototyping | Readability & Teaching |
+| **Core Class `f5`** | Basic activations & losses | **Improved `f5`**: More functions, better numerics, cleaner API |
+| **Speed** | Pure NumPy | **NumPy + SciPy** for Conv2D and Pooling |
+| **User Experience** | Functional | **Better DX**: Clear errors, type hints, docs, examples |
+| **Model Support** | `n5` models only | **Dual Support**: Load `.n5` + New `.y5` format |
+| **New Features** | Limited | BatchNorm, Adam, LR Schedulers, More Activations |
+| **Goal** | Prototype | **Teach + Research + Benchmark** |
 
-### What to Expect from Y5
+### Key Improvements
 
-1.  **Easier to Learn**: Every function in `f5` and `yNN` will have detailed docstrings and math explanations.
-2.  **Better Examples**: We will include 10+ notebooks showing how to build MLP, CNN, and Autoencoders from zero.
-3.  **GitHub Friendly**: Clean project structure, issues, and contribution guidelines for bug reports only.
-4.  **Stable API**: Once we hit v1.0 the core `yNN.Sequential` API will be frozen.
+1.  **Improved `class f5`**  
+    The math core is rewritten. More activation functions, more loss functions, better stability.  
+    Same `f5.activation()` and `f5.compute_loss()` style so it's familiar.
 
-### Current Status
-Y5 is in `Alpha`. The API can and will change. Use only for learning.
+2.  **Better User Experience**  
+    Cleaner error messages. Full docstrings. Example notebooks. Easier to debug than `n5`.
 
-### Installation
-```bash
-pip install numpy
-git clone https://github.com/soufian2024/Y5
+3.  **Dual Model Support**  
+    You can load your old `n5` models directly in Y5.  
+    And you can also use the new `Y5` model format with more features.
+
+4.  **SciPy Acceleration**  
+    `Conv2D` and `Pooling` layers now use `scipy` internally for a major speed boost.
+
+### Status
+`Y5 v0.1 Alpha`. API is stable but may receive improvements. 
+
+### Quick Example
+```python
+from y5 import yNN, f5
+import numpy as np
+
+# Works with new Y5 models
+model = yNN.Sequential()
+model.add(yNN.Dense(784, 128, activation='relu'))
+model.add(yNN.Dense(128, 10, activation='softmax'))
+
+# You can also load old n5 models
+# model = yNN.Sequential.load_n5("old_model.n5")
