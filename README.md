@@ -70,3 +70,6 @@ New goal: make it faster with SciPy and make the developer experience smooth.
 ```bash
 pip install numpy scipy
 git clone https://github.com/soufian2024/Y5
+
+```
+#chtoukisoufian69@gmail.com
